@@ -8,7 +8,7 @@
     "build": "ng build -prod -aot",
     "test": "ng test",
     "lint": "ng lint --fix --format codeFrame",
-    "e2e": "ng e2e",
+    "e2e": "ng e2e -prod -aot",
     "deploy": "npm run build && firebase deploy",
     "postinstall": "chmod 744 pre-commit && cp pre-commit .git/hooks/pre-commit"
   },
