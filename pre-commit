@@ -26,14 +26,3 @@ if [[ ${EXIT_CODE} -ne 0 ]]; then
 else
 	echo "E2E Tests passed\n"
 fi
-
-npm run build
-EXIT_CODE=$?
-if [[ ${EXIT_CODE} -ne 0 ]]; then
-  echo "Build failed\n"
-  exit 1
-else
-	echo "Build completed successfully\n"
-fi
-
-exit 0
