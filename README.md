@@ -1,5 +1,16 @@
 # ReadThatLater
 
+## [App mockup](http://ninjamock.com/s/1J7DG)
+
+![App mockup](https://cloud.githubusercontent.com/assets/4995814/20304402/10c7b71e-ab41-11e6-8d13-9eb8cf9bb510.png)
+
+
+## Init
+1. Install dependencies with `$ yarn` or `$ npm install`
+2. Run app with `$ npm start`
+3. Run tests with `$ npm test`
+4. Deploy with `$ npm run deploy`
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.0-beta.1.
 
 ## Development server
