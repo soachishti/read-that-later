@@ -1,25 +1,37 @@
 #!/bin/sh
 
-ng lint --format codeFrame
+npm run lint
 EXIT_CODE=$?
 if [[ ${EXIT_CODE} -ne 0 ]]; then
-    exit 1
+  echo "Lint failed\n"
+  exit 1
 else
 	echo "Lint completed successfully\n"
 fi
 
-#ng test --singleRun
-#EXIT_CODE=$?
-#if [[ ${EXIT_CODE} -ne 0 ]]; then
-#    exit 1
-#else
-#	echo "Tests passed\n"
-#fi
-
-ng build --target=production --aot
+npm run test -- -sr
 EXIT_CODE=$?
 if [[ ${EXIT_CODE} -ne 0 ]]; then
-    exit 1
+  echo "Tests failed\n"
+  exit 1
+else
+	echo "Tests passed\n"
+fi
+
+npm run e2e
+EXIT_CODE=$?
+if [[ ${EXIT_CODE} -ne 0 ]]; then
+  echo "E2E Tests failed\n"
+  exit 1
+else
+	echo "E2E Tests passed\n"
+fi
+
+npm run build
+EXIT_CODE=$?
+if [[ ${EXIT_CODE} -ne 0 ]]; then
+  echo "Build failed\n"
+  exit 1
 else
 	echo "Build completed successfully\n"
 fi
