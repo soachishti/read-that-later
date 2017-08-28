@@ -1,0 +1,20 @@
+<h2 class="page-head-text">
+  Items
+</h2>
+
+<rl-items-add></rl-items-add>
+
+<ul class="items">
+  <li *ngFor="let item of items$ | async" class="items__item">
+    <button (click)="toggle(item)">TOGGLE</button>
+    <span class="items__item__title">{{item}}</span>
+  </li>
+</ul>
+
+<h3>Selected:</h3>
+<ul>
+  <li *ngFor="let item of selectedItems$ | async">
+    <button (click)="toggle(item)">TOGGLE</button>
+    {{item}}
+  </li>
+</ul>

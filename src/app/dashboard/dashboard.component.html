@@ -1,0 +1,15 @@
+<h2 class="page-head-text">Dashboard</h2>
+
+<button (click)="changeChartType('pie')"
+        class="chart-type-switcher chart-type-switcher_pie">
+  PIE
+</button>
+<button (click)="changeChartType('line')"
+        class="chart-type-switcher chart-type-switcher_line">
+  LINE
+</button>
+
+<h3 class="indicator_chart-type">{{chartType$ | async}}</h3>
+
+<h3 class="indicator_items-count">Items: {{itemsCount$ | async}}</h3>
+<h3 class="indicator_tags-count">Tags: {{tagsCount$ | async}}</h3>

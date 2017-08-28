@@ -1,0 +1,19 @@
+<div class="menu">
+  <a [routerLink]="['/dashboard']" class="menu__item menu__item_dashboard">
+    Dashboard
+  </a>
+  <a [routerLink]="['/items']" class="menu__item menu__item_items">
+    Items
+  </a>
+  <a [routerLink]="['/tags']" class="menu__item menu__item_tags">
+    Tags
+  </a>
+  <a (click)="signOut()"
+     href="javascript:;"
+     class="menu__item menu__item_sign-out"
+  >Sign Out</a>
+</div>
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
