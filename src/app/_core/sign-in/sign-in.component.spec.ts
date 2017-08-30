@@ -39,4 +39,10 @@ describe('SignInComponent', () => {
       new AuthSignInAction({name: 'Anton'}));
   });
 
+  it('should dispatch AuthSignInAction on click sign in button()', () => {
+    fixture.debugElement.nativeElement.querySelector('button.sign-in').click();
+    expect(store.dispatch).toHaveBeenCalledWith(
+      new AuthSignInAction({name: 'Anton'}));
+  });
+
 });
