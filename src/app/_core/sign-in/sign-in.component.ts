@@ -15,8 +15,9 @@ export class SignInComponent implements OnInit {
   }
 
   ngOnInit () {
-    const user = localStorage.getItem('user');
-    if (user) {
+    const userSerialized = localStorage.getItem('user');
+    if (userSerialized) {
+      const user = JSON.parse(userSerialized);
       this.store.dispatch(new AuthSignInAction(user));
     }
   }
