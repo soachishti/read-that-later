@@ -17,9 +17,6 @@ describe('AppComponent', () => {
         {provide: APP_BASE_HREF, useValue: '/'}
       ]
     }).compileComponents();
-    const fixture = TestBed.createComponent(AppComponent);
-    const component = fixture.componentInstance;
-    fixture.detectChanges();
   }));
 
   it('should create the app', async(() => {
