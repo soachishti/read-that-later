@@ -19,10 +19,10 @@ module.exports = function (config) {
       reports: [ 'html', 'lcovonly' ],
       fixWebpackSourcePaths: true,
       thresholds: {
-        statements: 95,
-        lines: 95,
-        branches: 95,
-        functions: 95
+        statements: 50,
+        lines: 50,
+        branches: 50,
+        functions: 50
       }
     },
     angularCli: {
