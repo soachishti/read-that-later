@@ -1,23 +1,35 @@
 import { SignedInPage } from './signed-in.po';
 import { reachGuardedPage } from '../_helpers/reachPage.helper';
 import { SignInPage } from '../sign-in/sign-in.po';
+import { DashboardPage } from '../dashboard/dashboard.po';
+import { ItemsPage } from '../items/items.po';
+import { TagsPage } from '../tags/tags.po';
 
 describe('SignedInPage', () => {
   let page: SignedInPage;
-  let signInPage: SignInPage;
 
   beforeEach(() => {
     page = new SignedInPage();
-    signInPage = new SignInPage();
     reachGuardedPage(page);
-  });
-
-  it('should has sign out button', () => {
-    expect(page.getSignOutButton().isPresent()).toEqual(true);
   });
 
   it('should has menu', () => {
     expect(page.hasMenuItems()).toEqual(true);
+  });
+
+  it('should move to "Dashboard" page on menu item click', () => {
+    page.navigateToDashboard();
+    expect(new DashboardPage().isOn()).toEqual(true);
+  });
+
+  it('should move to "Items" page on menu item click', () => {
+    page.navigateToItems();
+    expect(new ItemsPage().isOn()).toEqual(true);
+  });
+
+  it('should move to "Tags" page on menu item click', () => {
+    page.navigateToTags();
+    expect(new TagsPage().isOn()).toEqual(true);
   });
 
   it('should has content area', () => {
@@ -26,6 +38,6 @@ describe('SignedInPage', () => {
 
   it('should sign out', () => {
     page.signOut();
-    expect(signInPage.isOn()).toEqual(true);
+    expect(new SignInPage().isOn()).toEqual(true);
   });
 });
