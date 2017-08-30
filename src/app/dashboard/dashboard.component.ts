@@ -20,7 +20,6 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit () {
-    this.store.subscribe(s => console.log('state:', s));
     this.itemsCount$ = this.store.select(s => s.core.items ? s.core.items.length : 0);
     this.tagsCount$ = this.store.select(s => s.core.tags ? s.core.tags.length : 0);
     this.chartType$ = this.store.select(s => s.dashboard.chartType);
