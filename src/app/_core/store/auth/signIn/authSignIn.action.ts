@@ -2,7 +2,7 @@ import { Action } from '@ngrx/store';
 import { CoreState } from '../../core.state';
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
-import { ItemsLoadedAction } from '../../items/itemsLoaded.action';
+import { ItemsLoadedAction } from '../../items/loaded/itemsLoaded.action';
 import { TagsLoadedAction } from '../../tags/tagsLoaded.action';
 import { AuthRouterService } from '../../../../_shared/auth/authRouter.service';
 import { Router } from '@angular/router';

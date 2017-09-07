@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { CoreState } from '../core.state';
+import { CoreState } from '../../core.state';
 export const ItemsLoadedActionType = 'ITEMS_LOADED';
 
 export class ItemsLoadedAction implements Action {

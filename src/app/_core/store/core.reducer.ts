@@ -13,7 +13,7 @@ import {
   ItemsLoadedAction,
   ItemsLoadedActionHandler,
   ItemsLoadedActionType
-} from './items/itemsLoaded.action';
+} from './items/loaded/itemsLoaded.action';
 import {
   TagsLoadedAction,
   TagsLoadedActionHandler,
