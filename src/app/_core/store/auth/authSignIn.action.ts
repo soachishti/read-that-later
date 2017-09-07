@@ -33,7 +33,6 @@ export class AuthSignInActionEffect {
     .map((action: AuthSignInAction) => {
       const user = action.payload;
       // TODO: this.logger.setAuth(user);
-      console.log('User signed in:', user);
       localStorage.setItem('user', JSON.stringify(user));
       const redirectUrl = localStorage.getItem('redirectUrl'); // TODO: store it in Store!
       localStorage.removeItem('redirectUrl');

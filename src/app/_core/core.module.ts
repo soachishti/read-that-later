@@ -15,8 +15,6 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AuthSignInActionEffect } from './store/auth/authSignIn.action';
 import { AppStateInitial } from './store/app.state';
 import { AuthSignOutActionEffect } from './store/auth/authSignOut.action';
-import { ItemsLoadedActionEffect } from './store/items/itemsLoaded.action';
-import { TagsLoadedActionEffect } from './store/tags/tagsLoaded.action';
 import { SignedInComponent } from './signed-in/signed-in.component';
 
 @NgModule({
@@ -30,9 +28,7 @@ import { SignedInComponent } from './signed-in/signed-in.component';
     StoreRouterConnectingModule,
     EffectsModule.forRoot([
       AuthSignInActionEffect,
-      AuthSignOutActionEffect,
-      ItemsLoadedActionEffect,
-      TagsLoadedActionEffect
+      AuthSignOutActionEffect
     ]),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
