@@ -12,9 +12,9 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AuthSignInActionEffect } from './store/auth/authSignIn.action';
+import { AuthSignInActionEffect } from './store/auth/signIn/authSignIn.action';
 import { AppStateInitial } from './store/app.state';
-import { AuthSignOutActionEffect } from './store/auth/authSignOut.action';
+import { AuthSignOutActionEffect } from './store/auth/signOut/authSignOut.action';
 import { SignedInComponent } from './signed-in/signed-in.component';
 
 @NgModule({

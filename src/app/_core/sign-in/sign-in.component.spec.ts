@@ -4,7 +4,7 @@ import { SignInComponent } from './sign-in.component';
 import { AppTestingModule } from '../../appTesting.module';
 import { Store } from '@ngrx/store';
 import { AppState } from '../store/app.state';
-import { AuthSignInAction } from '../store/auth/authSignIn.action';
+import { AuthSignInAction } from '../store/auth/signIn/authSignIn.action';
 
 describe('SignInComponent', () => {
   let component: SignInComponent;

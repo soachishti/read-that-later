@@ -8,11 +8,11 @@ import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { cold, hot } from 'jasmine-marbles';
 import { Observable } from 'rxjs/Observable';
-import { ItemsLoadedAction } from '../items/itemsLoaded.action';
-import { AuthRouterService } from '../../../_shared/auth/authRouter.service';
+import { ItemsLoadedAction } from '../../items/itemsLoaded.action';
+import { AuthRouterService } from '../../../../_shared/auth/authRouter.service';
 import { RouterTestingModule } from '@angular/router/testing';
-import { TagsLoadedAction } from '../tags/tagsLoaded.action';
-import { AppComponent } from '../../../app.component';
+import { TagsLoadedAction } from '../../tags/tagsLoaded.action';
+import { AppComponent } from '../../../../app.component';
 import { Router } from '@angular/router';
 
 describe('authSignIn.action.ts', () => {

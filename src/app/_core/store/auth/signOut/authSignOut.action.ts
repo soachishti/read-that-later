@@ -1,8 +1,8 @@
 import { Action } from '@ngrx/store';
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
-import { AppState, AppStateInitial } from '../app.state';
-import { AuthRouterService } from '../../../_shared/auth/authRouter.service';
+import { AppState, AppStateInitial } from '../../app.state';
+import { AuthRouterService } from '../../../../_shared/auth/authRouter.service';
 export const AuthSignOutActionType = 'AUTH_SIGN_OUT';
 
 export class AuthSignOutAction implements Action {

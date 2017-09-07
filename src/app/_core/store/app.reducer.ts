@@ -6,7 +6,7 @@ import {
   AuthSignOutAction,
   AuthSignOutActionHandler,
   AuthSignOutActionType
-} from './auth/authSignOut.action';
+} from './auth/signOut/authSignOut.action';
 
 export const AppReducers: ActionReducerMap<AppState> = {
   core: CoreReducer

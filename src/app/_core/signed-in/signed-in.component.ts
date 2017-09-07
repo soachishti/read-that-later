@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../store/app.state';
-import { AuthSignOutAction } from '../store/auth/authSignOut.action';
+import { AuthSignOutAction } from '../store/auth/signOut/authSignOut.action';
 
 @Component({
   selector: 'rl-signed-in',

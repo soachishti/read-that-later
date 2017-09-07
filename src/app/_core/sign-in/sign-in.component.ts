@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { AuthSignInAction } from '../store/auth/authSignIn.action';
+import { AuthSignInAction } from '../store/auth/signIn/authSignIn.action';
 import { AppState } from '../store/app.state';
 import { Store } from '@ngrx/store';
 

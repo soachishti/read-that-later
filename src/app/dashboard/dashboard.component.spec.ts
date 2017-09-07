@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardComponent } from './dashboard.component';
 import { Store } from '@ngrx/store';
-import { AuthSignInAction } from '../_core/store/auth/authSignIn.action';
+import { AuthSignInAction } from '../_core/store/auth/signIn/authSignIn.action';
 import { AppTestingModule } from '../appTesting.module';
 
 describe('DashboardComponent', () => {

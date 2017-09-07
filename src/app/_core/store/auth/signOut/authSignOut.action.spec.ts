@@ -3,7 +3,7 @@ import {
   AuthSignOutActionHandler,
   AuthSignOutActionType
 } from './authSignOut.action';
-import { AppStateInitial } from '../app.state';
+import { AppStateInitial } from '../../app.state';
 
 describe('authSignOut.action.ts', () => {
   describe('Action', () => {

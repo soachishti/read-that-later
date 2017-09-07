@@ -4,7 +4,7 @@ import { SignedInComponent } from './signed-in.component';
 import { AppTestingModule } from '../../appTesting.module';
 import { Store } from '@ngrx/store';
 import { AppState } from '../store/app.state';
-import { AuthSignOutAction } from '../store/auth/authSignOut.action';
+import { AuthSignOutAction } from '../store/auth/signOut/authSignOut.action';
 
 describe('SignedInComponent', () => {
   let component: SignedInComponent;

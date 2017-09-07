@@ -8,7 +8,7 @@ import {
   AuthSignInAction,
   AuthSignInActionHandler,
   AuthSignInActionType
-} from './auth/authSignIn.action';
+} from './auth/signIn/authSignIn.action';
 import {
   ItemsLoadedAction,
   ItemsLoadedActionHandler,
