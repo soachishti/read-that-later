@@ -3,7 +3,7 @@ import {
   ItemsAddAction,
   ItemsAddActionHandler,
   ItemsAddActionType
-} from './items/itemsAdd.action';
+} from './items/add/itemsAdd.action';
 import {
   AuthSignInAction,
   AuthSignInActionHandler,

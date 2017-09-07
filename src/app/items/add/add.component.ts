@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../_core/store/app.state';
-import { ItemsAddAction } from '../../_core/store/items/itemsAdd.action';
+import { ItemsAddAction } from '../../_core/store/items/add/itemsAdd.action';
 
 @Component({
   selector: 'rl-items-add',
