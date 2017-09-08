@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { AppState } from '../_core/store/app.state';
-import { TagsToggleAction } from './_store/toggle/toggle.action';
+import { TagsToggleAction } from './_store/toggle/tagsToggle.action';
 
 @Component({
   selector: 'rl-tags',

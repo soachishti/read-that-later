@@ -3,7 +3,7 @@ import {
   TagsToggleAction,
   TagsToggleActionHandler,
   TagsToggleActionType
-} from './toggle/toggle.action';
+} from './toggle/tagsToggle.action';
 
 export function TagsReducer (state = TagsStateInitial,
                              action: any): TagsState {
