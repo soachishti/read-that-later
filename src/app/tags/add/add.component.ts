@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../_core/store/app.state';
-import { TagsAddAction } from '../../_core/store/tags/tagsAdd.action';
+import { TagsAddAction } from '../../_core/store/tags/add/tagsAdd.action';
 
 @Component({
   selector: 'rl-tags-add',

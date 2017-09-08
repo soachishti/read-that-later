@@ -23,7 +23,7 @@ import {
   TagsAddAction,
   TagsAddActionHandler,
   TagsAddActionType
-} from './tags/tagsAdd.action';
+} from './tags/add/tagsAdd.action';
 
 export function CoreReducer (state = CoreStateInitial, action: any): CoreState {
   switch (action.type) {
