@@ -2,7 +2,7 @@ import {
   ItemsToggleAction,
   ItemsToggleActionHandler,
   ItemsToggleActionType
-} from './toggle.action';
+} from './itemsToggle.action';
 
 describe('itemsToggle.action.ts', () => {
   const toggleItem = 'item1';

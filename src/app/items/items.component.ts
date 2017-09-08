@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { AppState } from '../_core/store/app.state';
-import { ItemsToggleAction } from './_store/toggle/toggle.action';
+import { ItemsToggleAction } from './_store/toggle/itemsToggle.action';
 
 @Component({
   selector: 'rl-items',

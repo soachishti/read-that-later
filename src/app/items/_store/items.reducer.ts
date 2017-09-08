@@ -3,7 +3,7 @@ import {
   ItemsToggleAction,
   ItemsToggleActionHandler,
   ItemsToggleActionType
-} from './toggle/toggle.action';
+} from './toggle/itemsToggle.action';
 
 export function ItemsReducer (state = ItemsStateInitial,
                               action: any): ItemsState {
