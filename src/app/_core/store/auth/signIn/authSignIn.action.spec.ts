@@ -11,7 +11,7 @@ import { Observable } from 'rxjs/Observable';
 import { ItemsLoadedAction } from '../../items/loaded/itemsLoaded.action';
 import { AuthRouterService } from '../../../../_shared/auth/authRouter.service';
 import { RouterTestingModule } from '@angular/router/testing';
-import { TagsLoadedAction } from '../../tags/tagsLoaded.action';
+import { TagsLoadedAction } from '../../tags/loaded/tagsLoaded.action';
 import { AppComponent } from '../../../../app.component';
 import { Router } from '@angular/router';
 

@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { CoreState } from '../core.state';
+import { CoreState } from '../../core.state';
 export const TagsLoadedActionType = 'TAGS_LOADED';
 
 export class TagsLoadedAction implements Action {

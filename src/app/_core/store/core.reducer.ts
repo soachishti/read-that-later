@@ -18,7 +18,7 @@ import {
   TagsLoadedAction,
   TagsLoadedActionHandler,
   TagsLoadedActionType
-} from './tags/tagsLoaded.action';
+} from './tags/loaded/tagsLoaded.action';
 import {
   TagsAddAction,
   TagsAddActionHandler,
