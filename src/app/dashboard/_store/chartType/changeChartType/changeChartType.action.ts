@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
-import { DashboardState } from '../dashboard.state';
-import { DashboardChartType } from './chartType.type';
+import { DashboardState } from '../../dashboard.state';
+import { DashboardChartType } from '../chartType.type';
 export const DashboardChangeChartTypeActionType = 'DASHBOARD_CHANGE_CHART_TYPE';
 
 export class DashboardChangeChartTypeAction implements Action {

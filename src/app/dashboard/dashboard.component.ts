@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { DashboardChartType } from './_store/chartType/chartType.type';
 import { Store } from '@ngrx/store';
 import { AppState } from '../_core/store/app.state';
-import { DashboardChangeChartTypeAction } from './_store/chartType/changeChartType.action';
+import { DashboardChangeChartTypeAction } from './_store/chartType/changeChartType/changeChartType.action';
 import { Observable } from 'rxjs/Observable';
 
 @Component({

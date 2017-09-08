@@ -2,7 +2,7 @@ import {
   DashboardChangeChartTypeAction,
   DashboardChangeChartTypeActionHandler,
   DashboardChangeChartTypeActionType
-} from './chartType/changeChartType.action';
+} from './chartType/changeChartType/changeChartType.action';
 import { DashboardState, DashboardStateInitial } from './dashboard.state';
 
 export function DashboardReducer (state = DashboardStateInitial, action: any): DashboardState {
