@@ -6,15 +6,21 @@
 
 <ul class="items">
   <li *ngFor="let item of items$ | async" class="items__item">
-    <button (click)="toggle(item)">TOGGLE</button>
+    <button class="items__item__toggle-button"
+            (click)="toggle(item)">
+      TOGGLE
+    </button>
     <span class="items__item__title">{{item}}</span>
   </li>
 </ul>
 
 <h3>Selected:</h3>
-<ul>
-  <li *ngFor="let item of selectedItems$ | async">
-    <button (click)="toggle(item)">TOGGLE</button>
-    {{item}}
+<ul class="items_selected">
+  <li *ngFor="let item of selectedItems$ | async" class="items_selected__item">
+    <button class="items_selected__item__toggle-button"
+            (click)="toggle(item)">
+      TOGGLE
+    </button>
+    <span class="items_selected__item__title">{{item}}</span>
   </li>
 </ul>
