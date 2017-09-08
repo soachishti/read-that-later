@@ -4,15 +4,21 @@
 <rl-tags-add></rl-tags-add>
 <ul class="tags">
   <li *ngFor="let tag of tags$ | async" class="tags__tag">
-    <button (click)="toggle(tag)">TOGGLE</button>
+    <button class="tags__tag__toggle-button"
+            (click)="toggle(tag)">
+      TOGGLE
+    </button>
     <span class="tags__tag__title">{{tag}}</span>
   </li>
 </ul>
 
 <h3>Selected:</h3>
-<ul>
-  <li *ngFor="let tag of selectedTags$ | async">
-    <button (click)="toggle(tag)">TOGGLE</button>
-    {{tag}}
+<ul class="tags_selected">
+  <li *ngFor="let tag of selectedTags$ | async" class="tags_selected__tag">
+    <button class="tags_selected__tag__toggle-button"
+            (click)="toggle(tag)">
+      TOGGLE
+    </button>
+    <span class="tags_selected__tag__title">{{tag}}</span>
   </li>
 </ul>
