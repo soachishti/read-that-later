@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from './_shared/auth/auth.service';
 
 @Component({
   selector: 'rl-root',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent implements OnInit {
+
+  constructor (private auth: AuthService, /* This is for initialization of AuthService */) {
+  }
 
   ngOnInit () {
     const exceptionsUrls = [

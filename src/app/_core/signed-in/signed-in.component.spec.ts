@@ -13,12 +13,12 @@ describe('SignedInComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SignedInComponent ],
+      declarations: [SignedInComponent],
       imports: [
         AppTestingModule
       ]
     })
-    .compileComponents();
+      .compileComponents();
     store = TestBed.get(Store);
     spyOn(store, 'dispatch').and.callThrough();
   }));
@@ -35,13 +35,15 @@ describe('SignedInComponent', () => {
 
   it('should dispatch AuthSignOutAction on signOut()', () => {
     component.signOut();
-    expect(store.dispatch).toHaveBeenCalledWith(
-      new AuthSignOutAction());
+    expect(store.dispatch).toHaveBeenCalledWith(new AuthSignOutAction());
   });
 
-  it('should dispatch AuthSignOutAction on click Sign Out button in menu()', () => {
+  it('should dispatch AuthSignOutAction on click Sign Out button in menu()', done => {
     fixture.debugElement.nativeElement.querySelector('.menu__item_sign-out').click();
-    expect(store.dispatch).toHaveBeenCalledWith(
-      new AuthSignOutAction());
+    setTimeout(() => {
+      expect(store.dispatch).toHaveBeenCalledWith(
+        new AuthSignOutAction());
+      done();
+    }, 300);
   });
 });

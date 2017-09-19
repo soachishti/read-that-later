@@ -6,22 +6,24 @@ import { ItemsLoadedAction } from '../../items/loaded/itemsLoaded.action';
 import { TagsLoadedAction } from '../../tags/loaded/tagsLoaded.action';
 import { AuthRouterService } from '../../../../_shared/auth/authRouter.service';
 import { Router } from '@angular/router';
-export const AuthSignInActionType = 'AUTH_SIGN_IN';
+import * as firebase from 'firebase/app';
+export const AuthSignedInActionType = 'AUTH_SIGNED_IN';
 
-export class AuthSignInAction implements Action {
-  readonly type = AuthSignInActionType;
+export class AuthSignedInAction implements Action {
+  readonly type = AuthSignedInActionType;
 
-  constructor (public payload: any) {
+  constructor (public payload: firebase.UserInfo) {
   }
 }
 
-export const AuthSignInActionHandler = (state: CoreState,
-                                        action: AuthSignInAction) => {
-  return Object.assign({}, state, {user: action.payload});
+export const AuthSignedInActionHandler = (state: CoreState,
+                                          action: AuthSignedInAction) => {
+  const auth = Object.assign({}, state.auth, {user: action.payload});
+  return Object.assign({}, state, {auth});
 };
 
 @Injectable()
-export class AuthSignInActionEffect {
+export class AuthSignedInActionEffect {
 
   constructor (private actions$: Actions,
                private authRouterService: AuthRouterService,
@@ -29,12 +31,12 @@ export class AuthSignInActionEffect {
   }
 
   @Effect({dispatch: false}) registerUser$ = this.actions$
-    .ofType(AuthSignInActionType)
-    .map((action: AuthSignInAction) => {
+    .ofType(AuthSignedInActionType)
+    .map((action: AuthSignedInAction) => {
       const user = action.payload;
-      // TODO: this.logger.setAuth(user);
-      localStorage.setItem('user', JSON.stringify(user));
-      const redirectUrl = localStorage.getItem('redirectUrl'); // TODO: store it in Store!
+      //     // TODO: this.logger.setAuth(user);
+      const redirectUrl = localStorage.getItem('redirectUrl'); // TODO: store
+                                                               // it in Store!
       localStorage.removeItem('redirectUrl');
       if (redirectUrl) {
         this.router.navigateByUrl(redirectUrl);
@@ -44,15 +46,15 @@ export class AuthSignInActionEffect {
     });
 
   // TODO: @Effect() showHintsIfNecessary$:Observable<Action> = this.actions$
-  // .ofType(AuthSignInActionType)
+  // .ofType(AuthSignedInActionType)
   // .map(action =>
   // this.introduceService.shouldShowHintsForNewAuth(action.payload))
   // .filter(showGreeting => showGreeting) .map(() => new
   // ToggleHintsAction(true));
 
   @Effect() loadItems$ = this.actions$
-    .ofType(AuthSignInActionType)
-    .map((action: AuthSignInAction) => {
+    .ofType(AuthSignedInActionType)
+    .map((action: AuthSignedInAction) => {
       return new ItemsLoadedAction([
         'Implement basic Auth',
         'Implement basic Items module',
@@ -63,7 +65,7 @@ export class AuthSignInActionEffect {
     });
 
   @Effect() loadTags$ = this.actions$
-    .ofType(AuthSignInActionType)
+    .ofType(AuthSignedInActionType)
     .map(action => {
       return new TagsLoadedAction([
         'code',

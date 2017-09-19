@@ -1,14 +1,9 @@
-import { browser, by, element, protractor } from 'protractor';
-import { NavigatablePage } from '../_helpers/reachPage.helper';
+import { by, element, protractor } from 'protractor';
+import { NavigatablePage } from '../_helpers/navigatablePage.class';
 
-export class TagsPage implements NavigatablePage {
-  navigateTo () {
-    return browser.get('/tags');
-  }
-
-  isOn () {
-    return element(by.css('rl-tags')).isPresent();
-  }
+export class TagsPage extends NavigatablePage {
+  urlPath = '/tags';
+  componentSelector = 'rl-tags';
 
   getHeadText () {
     return element(by.css('h2')).getText();

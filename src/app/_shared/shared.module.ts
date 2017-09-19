@@ -23,4 +23,5 @@ import { NotLoggedInGuard } from './auth/notLoggedIn.guard';
     NotLoggedInGuard
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+}

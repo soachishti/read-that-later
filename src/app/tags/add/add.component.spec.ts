@@ -14,12 +14,12 @@ describe('TagsAddComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TagsAddComponent ],
+      declarations: [TagsAddComponent],
       imports: [
         AppTestingModule
       ]
     })
-    .compileComponents();
+      .compileComponents();
     store = TestBed.get(Store);
     store.dispatch(new TagsLoadedAction(['1', '2']));
     spyOn(store, 'dispatch').and.callThrough();

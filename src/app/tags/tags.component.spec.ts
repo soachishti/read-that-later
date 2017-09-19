@@ -32,12 +32,12 @@ describe('TagsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TagsComponent, TagsAddComponent ],
+      declarations: [TagsComponent, TagsAddComponent],
       imports: [
         AppTestingModule
       ]
     })
-    .compileComponents();
+      .compileComponents();
     store = TestBed.get(Store);
     spyOn(store, 'dispatch').and.callThrough();
   }));

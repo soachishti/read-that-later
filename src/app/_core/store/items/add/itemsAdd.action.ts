@@ -5,6 +5,7 @@ export const ItemsAddActionType = 'ITEMS_ADD';
 
 export class ItemsAddAction implements Action {
   readonly type = ItemsAddActionType;
+
   constructor (public payload: string) {
   }
 }

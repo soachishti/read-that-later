@@ -5,10 +5,10 @@ import {
   ItemsAddActionType
 } from './items/add/itemsAdd.action';
 import {
-  AuthSignInAction,
-  AuthSignInActionHandler,
-  AuthSignInActionType
-} from './auth/signIn/authSignIn.action';
+  AuthSignedInAction,
+  AuthSignedInActionHandler,
+  AuthSignedInActionType
+} from './auth/signedIn/authSignedIn.action';
 import {
   ItemsLoadedAction,
   ItemsLoadedActionHandler,
@@ -24,12 +24,33 @@ import {
   TagsAddActionHandler,
   TagsAddActionType
 } from './tags/add/tagsAdd.action';
+import {
+  AuthSignInFailedAction,
+  AuthSignInFailedActionHandler,
+  AuthSignInFailedActionType
+} from './auth/signInFailed/authSignInFailed.action';
+import {
+  AuthSignInWithGoogleAction,
+  AuthSignInWithGoogleActionHandler,
+  AuthSignInWithGoogleActionType
+} from './auth/signInWithGoogle/authSignInWithGoogle.action';
+import {
+  AuthSignInWithPasswordAction,
+  AuthSignInWithPasswordActionHandler,
+  AuthSignInWithPasswordActionType
+} from './auth/signInWithPassword/authSignInWithPassword.action';
 
 export function CoreReducer (state = CoreStateInitial, action: any): CoreState {
   switch (action.type) {
     // Auth
-    case AuthSignInActionType:
-      return AuthSignInActionHandler(state, action as AuthSignInAction);
+    case AuthSignedInActionType:
+      return AuthSignedInActionHandler(state, action as AuthSignedInAction);
+    case AuthSignInFailedActionType:
+      return AuthSignInFailedActionHandler(state, action as AuthSignInFailedAction);
+    case AuthSignInWithGoogleActionType:
+      return AuthSignInWithGoogleActionHandler(state, action as AuthSignInWithGoogleAction);
+    case AuthSignInWithPasswordActionType:
+      return AuthSignInWithPasswordActionHandler(state, action as AuthSignInWithPasswordAction);
 
     // Items
     case ItemsLoadedActionType:

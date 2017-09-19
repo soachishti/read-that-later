@@ -1,21 +1,25 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
-import { AuthService } from './auth.service';
+import { CanActivate } from '@angular/router';
 import { AuthRouterService } from './authRouter.service';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../_core/store/app.state';
 
 @Injectable()
 export class LoggedInGuard implements CanActivate {
 
-  constructor (private auth: AuthService,
+  constructor (private store: Store<AppState>,
                private authRouterService: AuthRouterService) {
   }
 
-  canActivate (): boolean {
-    if (!this.auth.isLoggedIn()) {
-      this.authRouterService.navigateToPublicRoute();
-      return false;
-    }
-
-    return true;
+  canActivate () {
+    return this.store
+      .select(s => s.core.auth.user)
+      .take(1)
+      .map(user => !!user)
+      .do(isSignedIn => {
+        if (!isSignedIn) {
+          this.authRouterService.navigateToPublicRoute();
+        }
+      });
   }
 }

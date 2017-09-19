@@ -11,6 +11,11 @@ import { ItemsStateInitial } from './items/_store/items.state';
 import { TagsStateInitial } from './tags/_store/tags.state';
 import { ItemsReducer } from './items/_store/items.reducer';
 import { TagsReducer } from './tags/_store/tags.reducer';
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../environments/environment';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { SharedModule } from './_shared/shared.module';
 
 @NgModule({
   imports: [
@@ -30,10 +35,19 @@ import { TagsReducer } from './tags/_store/tags.reducer';
         },
         metaReducers: AppMetaReducers
       }),
+
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    SharedModule
   ],
   exports: [
     RouterTestingModule,
-    StoreModule
+    StoreModule,
+    AngularFireModule,
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    SharedModule
   ]
 })
 export class AppTestingModule {

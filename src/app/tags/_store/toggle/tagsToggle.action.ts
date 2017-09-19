@@ -11,7 +11,7 @@ export class TagsToggleAction implements Action {
 }
 
 export const TagsToggleActionHandler = (state: TagsState,
-                                       action: TagsToggleAction) => {
+                                        action: TagsToggleAction) => {
   const index = state.selected.indexOf(action.payload);
   let newSelected;
   if (index >= 0) {

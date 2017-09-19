@@ -1,9 +1,9 @@
 import {
-  AuthSignInAction,
-  AuthSignInActionEffect,
-  AuthSignInActionHandler,
-  AuthSignInActionType
-} from './authSignIn.action';
+  AuthSignedInAction,
+  AuthSignedInActionEffect,
+  AuthSignedInActionHandler,
+  AuthSignedInActionType
+} from './authSignedIn.action';
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { cold, hot } from 'jasmine-marbles';
@@ -14,47 +14,64 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { TagsLoadedAction } from '../../tags/loaded/tagsLoaded.action';
 import { AppComponent } from '../../../../app.component';
 import { Router } from '@angular/router';
+import { CoreState } from '../../core.state';
 
-describe('authSignIn.action.ts', () => {
-  const user = {name: 'Anton'};
+export const testUser = {
+  displayName: null,
+  email: '2spy4x+firebase-test@gmail.com',
+  phoneNumber: null,
+  photoURL: null,
+  providerId: 'firebase',
+  uid: 'ntvx4eO1e4WJQUyQhbYmmGghVu52'
+};
+
+describe('authSignedIn.action.ts', () => {
 
   describe('Action', () => {
-    let action: AuthSignInAction;
+    let action: AuthSignedInAction;
     beforeEach(() => {
-      action = new AuthSignInAction(user);
+      action = new AuthSignedInAction(testUser);
     });
 
     it('should have proper type', () => {
-      expect(action.type).toEqual(AuthSignInActionType);
+      expect(action.type).toEqual(AuthSignedInActionType);
     });
 
     it('should have proper payload', () => {
-      expect(action.payload).toEqual({name: 'Anton'});
+      expect(action.payload).toEqual(testUser);
     });
   });
 
   describe('Handler', () => {
     it('should update "user" property in the state', () => {
-      expect(AuthSignInActionHandler({}, new AuthSignInAction(user)))
-        .toEqual({user: user});
+      const oldState: CoreState = {auth: {}};
+      const newState = AuthSignedInActionHandler(oldState, new AuthSignedInAction(testUser));
+      const expectedState = {auth: {user: testUser}};
+      expect(newState).toEqual(expectedState);
     });
     it('should update only "user" property in the state', () => {
-      const state = {
-        user: {name: 'Test'},
+      const user2 = {...testUser, displayName: 'Artem'} as any;
+      const oldState: CoreState = {
+        auth: {
+          user: user2
+        },
         items: [1, 2, 3],
         tags: [1, 2, 3]
       };
-      expect(AuthSignInActionHandler(state, new AuthSignInAction(user)))
-        .toEqual({
-          user: user,
-          items: [1, 2, 3],
-          tags: [1, 2, 3]
-        });
+      const newState = AuthSignedInActionHandler(oldState, new AuthSignedInAction(testUser));
+      const expectedState: CoreState = {
+        auth: {
+          user: testUser
+        },
+        items: [1, 2, 3],
+        tags: [1, 2, 3]
+      };
+      expect(newState).toEqual(expectedState as any);
     });
   });
 
   describe('Effect', () => {
-    let effects: AuthSignInActionEffect;
+    let effects: AuthSignedInActionEffect;
     let actions: Observable<any>;
     let router: Router;
 
@@ -70,17 +87,17 @@ describe('authSignIn.action.ts', () => {
           AppComponent
         ],
         providers: [
-          AuthSignInActionEffect,
+          AuthSignedInActionEffect,
           AuthRouterService,
           provideMockActions(() => actions)
         ],
       });
-      effects = TestBed.get(AuthSignInActionEffect);
+      effects = TestBed.get(AuthSignedInActionEffect);
       router = TestBed.get(Router);
     });
 
     it('should emit ItemsLoadedAction', () => {
-      actions = hot('--a-', {a: new AuthSignInAction(user)});
+      actions = hot('--a-', {a: new AuthSignedInAction(testUser)});
       const expected = cold('--b', {
         b: new ItemsLoadedAction([
           'Implement basic Auth',
@@ -94,7 +111,7 @@ describe('authSignIn.action.ts', () => {
     });
 
     it('should emit TagsLoadedAction', () => {
-      actions = hot('--a-', {a: new AuthSignInAction(user)});
+      actions = hot('--a-', {a: new AuthSignedInAction(testUser)});
       const expected = cold('--b', {
         b: new TagsLoadedAction([
           'code',

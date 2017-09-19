@@ -25,4 +25,5 @@ import { TagsAddComponent } from './add/add.component';
   ],
   declarations: [TagsComponent, TagsAddComponent]
 })
-export class TagsModule { }
+export class TagsModule {
+}

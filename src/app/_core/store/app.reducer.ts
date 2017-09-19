@@ -7,6 +7,7 @@ import {
   AuthSignOutActionHandler,
   AuthSignOutActionType
 } from './auth/signOut/authSignOut.action';
+import { storeLogger } from 'ngrx-store-logger';
 
 export const AppReducers: ActionReducerMap<AppState> = {
   core: CoreReducer
@@ -25,9 +26,18 @@ export function AppStateLevelReducer (reducer) {
   };
 }
 
-const productionReducers = [AppStateLevelReducer];
-const developmentReducers = [/*storeFreeze or similar meta reducers*/];
+export function LoggerReducer (reducer): any {
+  return storeLogger({collapsed: true})(reducer);
+}
 
-export const AppMetaReducers: MetaReducer<AppState, Action>[] = environment.production
-  ? productionReducers
-  : [...productionReducers, ...developmentReducers];
+const productionReducers = [AppStateLevelReducer];
+const developmentReducers = [LoggerReducer, /*storeFreeze or similar meta reducers*/];
+const testReducers = [/*storeFreeze or similar meta reducers*/];
+
+export const AppMetaReducers: MetaReducer<AppState, Action>[] =
+  environment.type === 'prod'
+    ? productionReducers
+    :
+    environment.type === 'dev'
+      ? [...productionReducers, ...developmentReducers]
+      : [...productionReducers, ...testReducers]; // 'test'

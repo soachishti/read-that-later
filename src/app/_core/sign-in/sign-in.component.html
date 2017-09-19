@@ -1,4 +1,17 @@
 <h1>
   Welcome to "Read that later" project!
-  <button (click)="signIn()" class="sign-in">Sign In</button>
 </h1>
+<button (click)="signInWithGoogle()" class="sign-in_google">Sign In with
+  Google
+</button>
+<button (click)="signInWithCredentials()" class="sign-in_credentials">Sign In
+  with credentials
+</button>
+<button (click)="signInWithWrongCredentials()"
+        class="sign-in_credentials-wrong">Sign In with wrong credentials
+</button>
+<div class="loading" *ngIf="isAuthInProgress$ | async">Please wait...</div>
+<div class="loading" *ngIf="failDetails$ | async as failDetails">
+  <pre>{{failDetails | json}}</pre>
+</div>
+

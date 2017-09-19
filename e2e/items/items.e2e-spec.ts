@@ -4,9 +4,9 @@ import { reachGuardedPage } from '../_helpers/reachPage.helper';
 describe('ItemsPage', () => {
   let page: ItemsPage;
 
-  beforeAll(() => {
+  beforeAll(async () => {
     page = new ItemsPage();
-    reachGuardedPage(page);
+    await reachGuardedPage(page);
   });
 
   it('should display head text', () => {

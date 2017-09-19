@@ -9,12 +9,11 @@ describe('SignInPage', () => {
   beforeAll(async () => {
     page = new SignInPage();
     dashboardPage = new DashboardPage();
-    reachPublicPage(page);
-    // browser.wait(browser.ExpectedConditions.urlContains('/sign-in'), 1000);
+    await reachPublicPage(page);
   });
 
   it('should sign in', async () => {
-    page.signIn();
+    await page.signIn();
     expect(dashboardPage.getHeadText()).toEqual('Dashboard');
   });
 });

@@ -1,14 +1,9 @@
-import { browser, by, element } from 'protractor';
-import { NavigatablePage } from '../_helpers/reachPage.helper';
+import { by, element } from 'protractor';
+import { NavigatablePage } from '../_helpers/navigatablePage.class';
 
-export class DashboardPage implements NavigatablePage {
-  navigateTo () {
-    return browser.get('/dashboard');
-  }
-
-  isOn () {
-    return element(by.css('rl-dashboard')).isPresent();
-  }
+export class DashboardPage extends NavigatablePage {
+  urlPath = '/dashboard';
+  componentSelector = 'rl-dashboard';
 
   getHeadText () {
     return element(by.css('.page-head-text')).getText();

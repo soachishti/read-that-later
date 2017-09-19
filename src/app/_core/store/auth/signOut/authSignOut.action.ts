@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { AppState, AppStateInitial } from '../../app.state';
 import { AuthRouterService } from '../../../../_shared/auth/authRouter.service';
+import { AngularFireAuth } from 'angularfire2/auth';
 export const AuthSignOutActionType = 'AUTH_SIGN_OUT';
 
 export class AuthSignOutAction implements Action {
@@ -21,17 +22,18 @@ export const AuthSignOutActionHandler = (state: AppState,
 export class AuthSignOutActionEffect {
 
   constructor (private actions$: Actions,
-               private authRouterService: AuthRouterService) {
+               private authRouterService: AuthRouterService,
+               private afAuth: AngularFireAuth) {
   }
 
   @Effect({dispatch: false}) cleanUp$ = this.actions$
     .ofType(AuthSignOutActionType)
     .map(action => {
-      console.log('User signed out');
       // TODO: this.logger.setAuth();
-      // TODO: this.auth.signOut();
       this.authRouterService.navigateToPublicRoute();
-      localStorage.removeItem('user');
+      this.afAuth.auth
+        .signOut()
+        .catch(console.error);
       // TODO: return this.introduceService.cleanUpOnUserSignOut();
     });
 }

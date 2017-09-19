@@ -1,14 +1,9 @@
-import { browser, by, element, protractor } from 'protractor';
-import { NavigatablePage } from '../_helpers/reachPage.helper';
+import { by, element, protractor } from 'protractor';
+import { NavigatablePage } from '../_helpers/navigatablePage.class';
 
-export class ItemsPage implements NavigatablePage {
-  navigateTo () {
-    return browser.get('/items');
-  }
-
-  isOn () {
-    return element(by.css('rl-items')).isPresent();
-  }
+export class ItemsPage extends NavigatablePage {
+  urlPath = '/items';
+  componentSelector = 'rl-items';
 
   getHeadText () {
     return element(by.css('.page-head-text')).getText();

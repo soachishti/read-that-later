@@ -1,16 +1,17 @@
-import { browser, by, element } from 'protractor';
-import { NavigatablePage } from '../_helpers/reachPage.helper';
+import { by, element } from 'protractor';
+import { timeoutSignIn } from '../_helpers/timeouts';
+import { NavigatablePage } from '../_helpers/navigatablePage.class';
 
-export class SignInPage implements NavigatablePage {
-  navigateTo () {
-    return browser.get('/sign-in');
-  }
+export class SignInPage extends NavigatablePage {
+  urlPath = '/sign-in';
+  componentSelector = 'rl-sign-in';
 
-  isOn () {
-    return element(by.css('rl-sign-in')).isPresent();
-  }
-
-  signIn () {
-    return element(by.css('button.sign-in')).click();
+  async signIn () {
+    element(by.css('button.sign-in_credentials')).click();
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve();
+      }, timeoutSignIn);
+    });
   }
 }

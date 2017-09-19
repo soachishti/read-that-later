@@ -1,8 +1,9 @@
-
 import {
-  ItemsLoadedAction, ItemsLoadedActionHandler,
+  ItemsLoadedAction,
+  ItemsLoadedActionHandler,
   ItemsLoadedActionType
 } from './itemsLoaded.action';
+import { testUser } from '../../auth/signedIn/authSignedIn.action.spec';
 describe('itemsLoaded.action.ts', () => {
   const items = ['one', 'two', 'three'];
 
@@ -23,19 +24,22 @@ describe('itemsLoaded.action.ts', () => {
 
   describe('Handler', () => {
     it('should fill empty items array in the state', () => {
-      expect(ItemsLoadedActionHandler({items: []}, new ItemsLoadedAction(items)))
-        .toEqual({items: items});
+      expect(ItemsLoadedActionHandler({
+        auth: {},
+        items: []
+      }, new ItemsLoadedAction(items)))
+        .toEqual({auth: {}, items: items} as any);
     });
     it('should only fill items array in the state', () => {
-      const state = {items: [], user: {name: 'Anton'}, tags: []};
-      const expectedState = {items: items, user: {name: 'Anton'}, tags: []};
+      const state = {items: [], auth: {user: testUser}, tags: []};
+      const expectedState = {items: items, auth: {user: testUser}, tags: []};
       expect(ItemsLoadedActionHandler(state, new ItemsLoadedAction(items)))
         .toEqual(expectedState);
     });
     it('should rewrite items array in the state', () => {
-      const state = {items: ['five', 'six']};
+      const state = {auth: {}, items: ['five', 'six']};
       expect(ItemsLoadedActionHandler(state, new ItemsLoadedAction(items)))
-        .toEqual({items: items});
+        .toEqual({auth: {}, items: items});
     });
   });
 });

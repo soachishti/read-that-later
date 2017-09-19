@@ -1,14 +1,10 @@
-import { browser, by, element } from 'protractor';
-import { NavigatablePage } from '../_helpers/reachPage.helper';
+import { by, element } from 'protractor';
+import { timeoutSignOut } from '../_helpers/timeouts';
+import { NavigatablePage } from '../_helpers/navigatablePage.class';
 
-export class SignedInPage implements NavigatablePage {
-  navigateTo () {
-    return browser.get('/');
-  }
-
-  isOn () {
-    return element(by.css('rl-signed-in')).isPresent();
-  }
+export class SignedInPage extends NavigatablePage {
+  urlPath = '/';
+  componentSelector = 'rl-signed-in';
 
   async hasMenuItems () {
     const hasMenu = await element(by.css('.menu')).isPresent();
@@ -19,14 +15,19 @@ export class SignedInPage implements NavigatablePage {
     return hasMenu && hasDashboard && hasItems && hasTags && hasSignOutButton;
   }
 
-  signOut () {
-    return this.getSignOutButton().click();
+  async signOut () {
+    this.getSignOutButton().click();
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve();
+      }, timeoutSignOut);
+    });
   }
 
   async signOutIfPresent () {
     const signOutButton = this.getSignOutButton();
     if (await signOutButton.isPresent()) {
-      this.signOut();
+      await this.signOut();
     }
   }
 

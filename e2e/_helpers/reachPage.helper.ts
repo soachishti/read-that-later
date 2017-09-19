@@ -1,37 +1,29 @@
 import { SignInPage } from '../sign-in/sign-in.po';
 import { SignedInPage } from '../signed-in/signed-in.po';
 import { browser } from 'protractor';
-export interface NavigatablePage {
-  navigateTo();
-  isOn();
-}
+import { NavigatablePage } from './navigatablePage.class';
 
 export const reachGuardedPage = async (page: NavigatablePage) => {
+  browser.waitForAngularEnabled(false); // https://github.com/angular/angularfire2/issues/225
   const signInPage = new SignInPage();
-  const signedInPage = new SignedInPage();
-  page.navigateTo();
+  await page.navigateTo();
   if (await page.isOn()) {
     return;
   }
-  if (await signedInPage.isOn()) {
-    signedInPage.navigateTo();
-    signedInPage.signOutIfPresent();
+  await signInPage.signIn();
+  await page.navigateTo();
+  if (!await page.isOn()) {
+    throw new Error('Can\'t reach required page');
   }
-  signInPage.navigateTo();
-  signInPage.signIn();
-  page.navigateTo();
 };
 
 export const reachPublicPage = async (page: NavigatablePage) => {
+  browser.waitForAngularEnabled(false); // https://github.com/angular/angularfire2/issues/225
   const signedInPage = new SignedInPage();
-  const signInPage = new SignInPage();
-  page.navigateTo();
+  await page.navigateTo();
   if (await page.isOn()) {
     return;
   }
-  signedInPage.navigateTo();
-  await browser.wait(() => signedInPage.isOn(), 1000, 'Wait for SignedInPage to be On');
-  signedInPage.signOutIfPresent();
-  await browser.wait(() => signInPage.isOn(), 1000, 'Wait for SignInPage to be On');
-  page.navigateTo();
+  await signedInPage.signOutIfPresent();
+  await page.navigateTo();
 };

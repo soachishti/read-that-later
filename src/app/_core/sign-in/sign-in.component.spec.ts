@@ -1,10 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SignInComponent } from './sign-in.component';
+import { SignInComponent, signInCredentials } from './sign-in.component';
 import { AppTestingModule } from '../../appTesting.module';
 import { Store } from '@ngrx/store';
 import { AppState } from '../store/app.state';
-import { AuthSignInAction } from '../store/auth/signIn/authSignIn.action';
+import { AuthSignInWithPasswordAction } from '../store/auth/signInWithPassword/authSignInWithPassword.action';
 
 describe('SignInComponent', () => {
   let component: SignInComponent;
@@ -33,16 +33,30 @@ describe('SignInComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should dispatch AuthSignInAction on signIn()', () => {
-    component.signIn();
+  it('should dispatch AuthSignedInAction on signedIn()', () => {
+    component.signInWithCredentials();
     expect(store.dispatch).toHaveBeenCalledWith(
-      new AuthSignInAction({name: 'Anton'}));
+      new AuthSignInWithPasswordAction(signInCredentials));
   });
 
-  it('should dispatch AuthSignInAction on click sign in button()', () => {
-    fixture.debugElement.nativeElement.querySelector('button.sign-in').click();
-    expect(store.dispatch).toHaveBeenCalledWith(
-      new AuthSignInAction({name: 'Anton'}));
+  it('should dispatch AuthSignedInAction on click sign in button()', done => {
+    fixture.debugElement.nativeElement.querySelector('button.sign-in_credentials').click();
+    setTimeout(() => {
+      expect(store.dispatch).toHaveBeenCalledWith(
+        new AuthSignInWithPasswordAction(signInCredentials));
+      done();
+    }, 300);
   });
 
+  it('should not show div.loading when "auth.isInProgress == false"', () => {
+    const loadingElement = fixture.debugElement.nativeElement.querySelector('.loading');
+    expect(loadingElement).toBeFalsy();
+  });
+
+  it('should show div.loading when "auth.isInProgress == true"', () => {
+    store.dispatch(new AuthSignInWithPasswordAction({email: '', password: ''}));
+    fixture.detectChanges();
+    const loadingElement = fixture.debugElement.nativeElement.querySelector('.loading');
+    expect(loadingElement).toBeTruthy();
+  });
 });

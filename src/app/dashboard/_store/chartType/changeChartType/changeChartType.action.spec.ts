@@ -4,7 +4,6 @@ import {
   DashboardChangeChartTypeActionType
 } from './changeChartType.action';
 import { DashboardChartType } from '../chartType.type';
-import { DashboardState } from '../../dashboard.state';
 
 describe('changeChartType.action.ts', () => {
   describe('Action', () => {

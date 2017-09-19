@@ -2,18 +2,18 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardComponent } from './dashboard.component';
 import { Store } from '@ngrx/store';
-import { AuthSignInAction } from '../_core/store/auth/signIn/authSignIn.action';
 import { AppTestingModule } from '../appTesting.module';
 import { DashboardChangeChartTypeAction } from './_store/chartType/changeChartType/changeChartType.action';
 import { ItemsAddAction } from '../_core/store/items/add/itemsAdd.action';
 import { ItemsLoadedAction } from '../_core/store/items/loaded/itemsLoaded.action';
 import { TagsLoadedAction } from '../_core/store/tags/loaded/tagsLoaded.action';
 import { TagsAddAction } from '../_core/store/tags/add/tagsAdd.action';
+import { AppState } from '../_core/store/app.state';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
   let fixture: ComponentFixture<DashboardComponent>;
-  let store: Store<any>;
+  let store: Store<AppState>;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [DashboardComponent],

@@ -4,6 +4,7 @@ import {
   AuthSignOutActionType
 } from './authSignOut.action';
 import { AppStateInitial } from '../../app.state';
+import { testUser } from '../signedIn/authSignedIn.action.spec';
 
 describe('authSignOut.action.ts', () => {
   describe('Action', () => {
@@ -24,7 +25,7 @@ describe('authSignOut.action.ts', () => {
   describe('Handler', () => {
     it('should return state to initial shape', () => {
       expect(AuthSignOutActionHandler(
-        {core: {user: {name: 'Anton'}}},
+        {core: {auth: {user: testUser}}},
         new AuthSignOutAction()))
         .toEqual(AppStateInitial);
     });

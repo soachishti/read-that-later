@@ -3,6 +3,7 @@ import {
   TagsAddActionHandler,
   TagsAddActionType
 } from './tagsAdd.action';
+import { testUser } from '../../auth/signedIn/authSignedIn.action.spec';
 
 describe('tagsAdd.action.ts', () => {
   const newTag = 'New tag';
@@ -24,19 +25,22 @@ describe('tagsAdd.action.ts', () => {
 
   describe('Handler', () => {
     it('should add tag to empty tags array in the state', () => {
-      expect(TagsAddActionHandler({tags: []}, new TagsAddAction(newTag)))
-        .toEqual({tags: [newTag]});
+      expect(TagsAddActionHandler({
+        auth: {},
+        tags: []
+      }, new TagsAddAction(newTag)))
+        .toEqual({auth: {}, tags: [newTag]} as any);
     });
     it('should only add tag to empty tags array in the state', () => {
-      const state = {items: [], user: {name: 'Anton'}, tags: []};
-      const expectedState = {items: [], user: {name: 'Anton'}, tags: [newTag]};
+      const state = {items: [], auth: {user: testUser}, tags: []};
+      const expectedState = {items: [], auth: {user: testUser}, tags: [newTag]};
       expect(TagsAddActionHandler(state, new TagsAddAction(newTag)))
         .toEqual(expectedState);
     });
     it('should add tag to non-empty tags array in the state', () => {
-      const state = {tags: ['one', 'two']};
+      const state = {auth: {}, tags: ['one', 'two']};
       expect(TagsAddActionHandler(state, new TagsAddAction(newTag)))
-        .toEqual({tags: ['one', 'two', newTag]});
+        .toEqual({auth: {}, tags: ['one', 'two', newTag]});
     });
   });
 });
