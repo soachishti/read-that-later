@@ -8,6 +8,7 @@ import {
   AuthSignOutActionType
 } from './auth/signOut/authSignOut.action';
 import { storeLogger } from 'ngrx-store-logger';
+import { localStorageSync } from 'ngrx-store-localstorage';
 
 export const AppReducers: ActionReducerMap<AppState> = {
   core: CoreReducer
@@ -30,7 +31,14 @@ export function LoggerReducer (reducer): any {
   return storeLogger({collapsed: true})(reducer);
 }
 
-const productionReducers = [AppStateLevelReducer];
+export function LocalStorageSyncReducer (reducer): any {
+  return localStorageSync({
+    keys: ['core', 'dashboard', 'items', 'tags'],
+    rehydrate: true
+  })(reducer);
+}
+
+const productionReducers = [AppStateLevelReducer, LocalStorageSyncReducer];
 const developmentReducers = [LoggerReducer, /*storeFreeze or similar meta reducers*/];
 const testReducers = [/*storeFreeze or similar meta reducers*/];
 

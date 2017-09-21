@@ -8,6 +8,7 @@ import { Store } from '@ngrx/store';
 import { TagsAddAction } from '../_core/store/tags/add/tagsAdd.action';
 import { TagsLoadedAction } from '../_core/store/tags/loaded/tagsLoaded.action';
 import { TagsToggleAction } from './_store/toggle/tagsToggle.action';
+import { AuthSignOutAction } from '../_core/store/auth/signOut/authSignOut.action';
 
 describe('TagsComponent', () => {
   let component: TagsComponent;
@@ -39,6 +40,7 @@ describe('TagsComponent', () => {
     })
       .compileComponents();
     store = TestBed.get(Store);
+    store.dispatch(new AuthSignOutAction());
     spyOn(store, 'dispatch').and.callThrough();
   }));
 

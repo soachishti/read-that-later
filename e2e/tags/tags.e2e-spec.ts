@@ -4,7 +4,7 @@ import { reachGuardedPage } from '../_helpers/reachPage.helper';
 describe('TagsPage', () => {
   let page: TagsPage;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     page = new TagsPage();
     await reachGuardedPage(page);
   });

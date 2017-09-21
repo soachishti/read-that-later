@@ -5,7 +5,10 @@ import {
   ItemsToggleActionType
 } from './toggle/itemsToggle.action';
 
-export function ItemsReducer (state = ItemsStateInitial,
+const ItemsStateFromLocalStorage: ItemsState =
+  JSON.parse(localStorage.getItem('items'));
+
+export function ItemsReducer (state = ItemsStateFromLocalStorage || ItemsStateInitial,
                               action: any): ItemsState {
   switch (action.type) {
     case ItemsToggleActionType:

@@ -5,6 +5,7 @@ import { AppTestingModule } from '../../appTesting.module';
 import { Store } from '@ngrx/store';
 import { AppState } from '../store/app.state';
 import { AuthSignInWithPasswordAction } from '../store/auth/signInWithPassword/authSignInWithPassword.action';
+import { AuthSignOutAction } from '../store/auth/signOut/authSignOut.action';
 
 describe('SignInComponent', () => {
   let component: SignInComponent;
@@ -20,6 +21,7 @@ describe('SignInComponent', () => {
     })
       .compileComponents();
     store = TestBed.get(Store);
+    store.dispatch(new AuthSignOutAction());
     spyOn(store, 'dispatch').and.callThrough();
   }));
 

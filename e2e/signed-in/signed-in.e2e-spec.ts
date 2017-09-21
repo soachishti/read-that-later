@@ -24,10 +24,6 @@ describe('SignedInPage', () => {
   });
 
   describe('navigation to other pages checks', () => {
-    beforeEach(async () => {
-      page = new SignedInPage();
-      await reachGuardedPage(page);
-    });
 
     it('should move to "Dashboard" page on menu item click', () => {
       page.navigateToDashboard();

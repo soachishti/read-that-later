@@ -8,6 +8,7 @@ import { AppState } from '../_core/store/app.state';
 import { ItemsLoadedAction } from '../_core/store/items/loaded/itemsLoaded.action';
 import { ItemsAddAction } from '../_core/store/items/add/itemsAdd.action';
 import { ItemsToggleAction } from './_store/toggle/itemsToggle.action';
+import { AuthSignOutAction } from '../_core/store/auth/signOut/authSignOut.action';
 
 describe('ItemsComponent', () => {
   let component: ItemsComponent;
@@ -39,6 +40,7 @@ describe('ItemsComponent', () => {
     })
       .compileComponents();
     store = TestBed.get(Store);
+    store.dispatch(new AuthSignOutAction());
     spyOn(store, 'dispatch').and.callThrough();
   }));
 

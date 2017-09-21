@@ -5,7 +5,10 @@ import {
   TagsToggleActionType
 } from './toggle/tagsToggle.action';
 
-export function TagsReducer (state = TagsStateInitial,
+const TagsStateFromLocalStorage: TagsState =
+  JSON.parse(localStorage.getItem('tags'));
+
+export function TagsReducer (state = TagsStateFromLocalStorage || TagsStateInitial,
                              action: any): TagsState {
   switch (action.type) {
     case TagsToggleActionType:
