@@ -9,7 +9,7 @@ else
 	echo "Lint completed successfully\n"
 fi
 
-npm run test -- -sr
+npm run test:pre-commit -- -sr
 EXIT_CODE=$?
 if [[ ${EXIT_CODE} -ne 0 ]]; then
   echo "Tests failed\n"
