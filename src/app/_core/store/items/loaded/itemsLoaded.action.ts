@@ -1,11 +1,12 @@
 import { Action } from '@ngrx/store';
 import { CoreState } from '../../core.state';
+import { Item } from '../_types/item.interface';
 export const ItemsLoadedActionType = 'ITEMS_LOADED';
 
 export class ItemsLoadedAction implements Action {
   readonly type = ItemsLoadedActionType;
 
-  constructor (public payload: string[]) {
+  constructor (public payload: Item[]) {
   }
 }
 
